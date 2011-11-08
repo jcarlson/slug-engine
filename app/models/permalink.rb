@@ -11,8 +11,12 @@ private
 
   # Validates that the slug is not routable to a controller other than PermalinksController
   def not_system_slug
-    route = Rails.application.routes.recognize_path "/#{slug}"
-    errors.add :slug, "is a reserved system route" unless route[:controller] == "permalinks"
+    begin
+      route = Rails.application.routes.recognize_path "/#{slug}"
+      errors.add :slug, "is a reserved system route" unless route[:controller] == "permalinks"
+    rescue ActionController::RoutingError
+      # No route matches, so that's probably good
+    end
   end
 
   def validate_content
