@@ -1,3 +1,37 @@
 # SlugEngine
+SlugEngine provides an easy, reusable method of adding permalinks to your content.
 
-SlugEngine provides an easy, reusable method of adding permalinks to your content. 
+## Getting Started
+First, add `gem 'slug_engine'` to your `Gemfile` and run `bundle install`.
+
+Second, mount the `SlugEngine` in `config/routes.rb` at the appropriate location.
+
+```ruby
+My::Application.routes.draw do
+  
+  # some REST-ful routes
+  resources :posts
+  
+  # the SlugEngine
+  mount Slug::Engine => "/"
+  
+end
+```
+
+It's best if you place the `SlugEngine` after your other routes, but this is not required. If the `SlugEngine` cannot find a matching slug, it will abstain from handling the request, allowing lower priority routes or other engines to take a stab at the request. If no further routes match, the normal 404 page will be returned.
+
+You can use a prefix with your slugs if you like:
+
+```ruby
+My::Application.routes.draw do
+  
+  # some REST-ful routes
+  resources :posts
+  
+  # the SlugEngine
+  mount Slug::Engine => "/p"
+  
+end
+```
+
+This will match requests like `"http://www.example.com/p/my-slug"` where `'my-slug'` is the matched slug. When authoring your content, `'/p'` will not be considered part of the slug, e.g., `p = Post.create :title => 'My Post', :slug => 'my-slug'` would still resolve when accessed at `"http://www.example.com/p/my-slug"` if the engine was prefixed.
