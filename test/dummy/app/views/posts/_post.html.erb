@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p><%= link_to "Home", root_path %></p>
+
+<p>
+  <b>Title:</b>
+  <%= post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= post.content %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= link_to post.slug, slug_engine.slug_path(post.slug) %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(post) %> |
+<%= link_to 'Back', posts_path %>

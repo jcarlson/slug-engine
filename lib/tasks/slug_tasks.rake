@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :has_permalink do
+# task :slug do
 #   # Task goes here
 # end

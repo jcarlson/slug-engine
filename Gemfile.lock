@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    has_permalink (0.0.1)
+    slug-engine (0.0.1)
       rails (~> 3.1.1)
 
 GEM
@@ -94,6 +94,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  has_permalink!
   jquery-rails
+  slug-engine!
   sqlite3
