@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "has_permalink/version"
+require "slug/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "has_permalink"
-  s.version     = HasPermalink::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.name        = "Slug Engine"
+  s.version     = Slug::VERSION
+  s.authors     = ["Jarrod Carlson"]
+  s.email       = ["jarrod.carlson@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of HasPermalink."
-  s.description = "TODO: Description of HasPermalink."
+  s.summary     = "Rails Engine for processing and rendering permalinks for content"
+  s.description = "TODO: Description of Slug."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

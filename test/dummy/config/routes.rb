@@ -1,5 +1,6 @@
 Dummy::Application.routes.draw do
+  root :to => 'posts#index'
   resources :posts
-  mount HasPermalink::Engine => "/"
+  mount Slug::Engine => "/"
   resources :users
 end

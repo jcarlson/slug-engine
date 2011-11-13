@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  include HasPermalink
+  include Slug
   
   protected
   
