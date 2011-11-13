@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    Slug Engine (0.0.1)
+    slug-engine (0.0.1)
       rails (~> 3.1.1)
 
 GEM
@@ -94,6 +94,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  Slug Engine!
   jquery-rails
+  slug-engine!
   sqlite3
