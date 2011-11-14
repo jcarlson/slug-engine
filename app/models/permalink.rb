@@ -7,6 +7,10 @@ class Permalink < ActiveRecord::Base
   validates_uniqueness_of :slug
   validate :not_system_slug
   
+  def to_param
+    slug
+  end
+  
 private
 
   # Validates that the slug is not routable to a controller other than PermalinksController
