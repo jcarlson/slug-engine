@@ -15,7 +15,7 @@ module Slug
   
     def call(env)
       # if a matching slug exists in the database, allow engine to process it
-      if Permalink.where('slug = ?', slug(env)).exists?
+      if Permalink.where('slug = ?', slug(env['PATH_INFO'])).exists?
         # slug found, allow request to continue to controller
         @app.call(env)
       else
@@ -25,10 +25,8 @@ module Slug
     end
 
     # Extract the :slug value from the raw request
-    def slug(env)
-      slug = env['PATH_INFO']
-      slug = slug.slice(1..-1) if slug[0] == 47 # has a leading '/'
-      slug
+    def slug(path)
+      path.match(/^(?:\/)?([^.]+)(?:\..*)?/)[1]
     end
     
   end
