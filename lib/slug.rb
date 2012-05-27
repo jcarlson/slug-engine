@@ -1,4 +1,3 @@
-require "slug/filter"
 require "slug/engine"
 
 module Slug

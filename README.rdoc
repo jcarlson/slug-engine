@@ -4,9 +4,18 @@ SlugEngine provides an easy, reusable method of adding permalinks to your conten
 
 == Getting Started
 
-First, add `gem 'slug_engine'` to your `Gemfile` and run `bundle install`.
+=== Install SlugEngine
 
-Second, mount the `SlugEngine` in `config/routes.rb` at the appropriate location.
+Simply add `gem 'slug_engine'` to your `Gemfile` and run `bundle install`.
+
+Install and run the included migrations as well:
+
+  rake slug_engine:install:migrations
+  rake db:migrate
+
+=== Configure SlugEngine
+
+Mount `SlugEngine` in `config/routes.rb` at the appropriate location.
 
   My::Application.routes.draw do
   
@@ -33,3 +42,13 @@ You can use a prefix with your slugs if you like:
   end
 
 This will match requests like `"http://www.example.com/p/my-slug"` where `'my-slug'` is the matched slug. When authoring your content, `'/p'` will not be considered part of the slug, e.g., `p = Post.create :title => 'My Post', :slug => 'my-slug'` would still resolve when accessed at `"http://www.example.com/p/my-slug"` if the engine was prefixed.
+
+=== Configure your models
+
+You'll need to `include Slug` on any models that you want accessible via a custom slug. You can provide a default slug generator as well if you want to ensure that every instance of your model has a slug. See the `Dummy` application in the source code for examples.
+
+=== Ensure you have controllers setup
+
+Previous versions of SlugEngine attempted to render the linked content through a PermalinksController provided in the engine. This is no longer the case. The engine will use your existing routes to lookup the first route to the content and then call your controller for that route.
+
+This means you retain full control of how content is prepared in the controller layer as well as how it gets rendered in the view layer. SlugEngine just acts as a router to internally redirect the incoming `slug` to a RESTful controller resource within your application. This is to provide you with as much control and flexibility as possible.

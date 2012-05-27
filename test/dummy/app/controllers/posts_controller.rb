@@ -13,12 +13,14 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    puts "\n\n*** PostsController was invoked ***\n\n"
     @post = Post.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @post }
-    end
+    render "show"
+    #respond_to do |format|
+    #  format.html # show.html.erb
+    #  format.json { render :json => @post }
+    #end
   end
 
   # GET /posts/new
