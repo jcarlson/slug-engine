@@ -6,7 +6,7 @@ SlugEngine provides an easy, reusable method of adding permalinks to your conten
 
 === Install SlugEngine
 
-Simply add `gem 'slug-engine'` to your `Gemfile` and run `bundle install`.
+Simply add <code>gem 'slug-engine'</code> to your <code>Gemfile</code> and run <code>bundle install</code>.
 
 Install and run the included migrations as well:
 
